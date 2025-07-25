@@ -778,6 +778,155 @@
                 margin-bottom: 10px;
             }
         }
+
+
+        /* Participants CTA Section */
+        .participants-cta-section {
+            background: linear-gradient(135deg, rgba(77, 166, 217, 0.2) 0%, rgba(77, 166, 217, 0.08) 100%);
+            border: 1px solid rgba(77, 166, 217, 0.4);
+            border-radius: 15px;
+            padding: 40px 30px;
+            margin: 40px 0;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .participants-cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4da6d9, #ffffff, #4da6d9);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .participants-cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .participants-cta-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(77, 166, 217, 0.7);
+        }
+
+        .participants-cta-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            margin-bottom: 30px;
+            font-weight: 500;
+            line-height: 1.6;
+            color: #e8e8e8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .participants-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .participants-info-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(77, 166, 217, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .participants-info-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .participants-info-icon {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .participants-info-text {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            font-weight: 600;
+            color: #4da6d9;
+            letter-spacing: 1px;
+        }
+
+        .participants-cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .participants-btn {
+            display: inline-block;
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(0.8rem, 1.8vw, 1rem);
+            font-weight: 700;
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .participants-btn.primary {
+            background: #4da6d9;
+            color: #1a1a2e;
+            border: 2px solid #4da6d9;
+        }
+
+        .participants-btn.primary:hover {
+            background: #5bb7ea;
+            border-color: #5bb7ea;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(77, 166, 217, 0.5);
+        }
+
+        .participants-btn.secondary {
+            background: transparent;
+            color: #4da6d9;
+            border: 2px solid #4da6d9;
+        }
+
+        .participants-btn.secondary:hover {
+            background: rgba(77, 166, 217, 0.15);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .participants-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .participants-info-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -830,6 +979,34 @@
             <div class="press-highlights">2023 Press Highlights – <a href="https://dac-scarl.github.io/DEFINSPACE2023/index.html" class="press-link">CLICK TO VIEW</a></div>
         </div>
         
+        <!-- Participants CTA Section -->
+        <div class="participants-cta-section">
+            <div class="participants-cta-content">
+                <h3 class="participants-cta-title">Ready to Shape the Future of Space Defense?</h3>
+                <p class="participants-cta-text">Join 24 hours of innovation, collaboration, and cutting-edge technology. Connect with top experts, work on real challenges, and compete for the Grand Finale in Paris.</p>
+                
+                <div class="participants-info-grid">
+                    <div class="participants-info-item">
+                        <span class="participants-info-icon">🛰️</span>
+                        <div class="participants-info-text">2 Real Challenges</div>
+                    </div>
+                    <div class="participants-info-item">
+                        <span class="participants-info-icon">🗼</span>
+                        <div class="participants-info-text">Win Paris Grand Finale</div>
+                    </div>
+                    <div class="participants-info-item">
+                        <span class="participants-info-icon">📡</span>
+                        <div class="participants-info-text">Expert Mentoring</div>
+                    </div>
+                </div>
+                
+                <div class="participants-cta-buttons">
+                    <a href="https://dac-scarl.github.io/DEFINSPACE2025/attendees.html" class="participants-btn primary">🎫 Pre-Register Now</a>
+                    
+                </div>
+            </div>
+        </div>
+
         <!-- Sponsor Section -->
         <div class="sponsor-section">
             <div class="sponsor-title">BECOME A SPONSOR</div>
@@ -851,7 +1028,7 @@
 
         <div class="cta-section">
             <div class="cta-content">
-                <h3 class="cta-title">Become DefInSpace 2025 Sponsor</h3>
+                <h3 class="cta-title">DefInSpace 2025 Sponsor Packages</h3>
                 <p class="cta-text">Join us for a unique experience of innovation and visibility in the aerospace sector.</p>
                 <div class="packages-preview">
                     <div class="packages-grid">
