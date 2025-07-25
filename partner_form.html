@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -352,7 +353,7 @@
         <div class="form-container">
             <h2 class="form-title">Manifestazione di Interesse</h2>
             
-            <form id="partnerForm" action="https://script.google.com/macros/s/AKfycbxD5uP2oBaR3teItJRXrKipxhIHPejEBKpR17tLBj5oPiqx-j0KSWMtRqTEhEf84ymK/exec" method="POST">
+            <form id="partnerForm">
                 <div class="form-group">
                     <label>Azienda / Ente <span class="required">*</span></label>
                     <input type="text" name="azienda" required placeholder="Inserisci il nome dell'azienda o ente">
@@ -406,7 +407,7 @@
         
         <!-- Info sections -->
         <div class="info-section">
-            <div class="info-title">Importante</div>
+            <div class="info-title">📋 Importante</div>
             <div class="info-text">
                 Questa manifestazione di interesse <strong>non è vincolante</strong>. Riceverai all'email indicata un invito di sponsorship ufficiale dal Distretto Aerospaziale della Campania con tutti i dettagli e le modalità di adesione.
             </div>
@@ -414,6 +415,7 @@
         
 
     </div>
+
     <script>
         const form = document.getElementById("partnerForm");
         const successMessage = document.getElementById("successMessage");
@@ -429,7 +431,7 @@
             
             const data = new FormData(form);
             
-            fetch("https://script.google.com/macros/s/AKfycbw-5MzCRMULf_ToN1d9Jm7IvwY-Q7aswjBiW_xJPqZyhs00vvLlF0zzYd-VWQhymHHj/exec", {
+            fetch("https://script.google.com/macros/s/AKfycbxD5uP2oBaR3teItJRXrKipxhIHPejEBKpR17tLBj5oPiqx-j0KSWMtRqTEhEf84ymK/exec", {
                 method: "POST",
                 body: data
             })
@@ -451,6 +453,5 @@
             });
         });
     </script>
-
 </body>
 </html>
