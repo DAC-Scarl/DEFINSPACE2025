@@ -283,12 +283,14 @@
         
         .discount-note {
             font-size: clamp(12px, 2vw, 16px);
-            color: #4da6d9;
+            color: #ffd700;
             font-weight: 600;
             padding: 15px;
             background: rgba(77, 166, 217, 0.1);
             border-radius: 8px;
             border: 1px solid rgba(77, 166, 217, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         /* Footer */
@@ -308,6 +310,22 @@
             margin-bottom: 10px;
         }
         
+
+ 
+
+        .discount-note:hover {
+            background: rgba(77, 166, 217, 0.2);
+            box-shadow: 0 4px 15px rgba(77, 166, 217, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .discount-note:focus-within {
+            outline: 2px solid #4da6d9;
+            outline-offset: 4px;
+        }
+
+
+
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             .container {
@@ -506,11 +524,17 @@
         
         <!-- Event Info -->
         <div class="event-info">
-            <div class="discount-note">
-                <strong>DEFINSPACE ITALY 2025</strong> • Napoli, 10-11 October  • Sponsor Partnership
+            <div class="discount-note" onclick="window.location.href='https://dac-scarl.github.io/DEFINSPACE2025/partner_form.html'" style="cursor: pointer;">
+                <strong>RISERVA LA TUA PARTNERSHIP</strong> • Pre-booking informativo •
             </div>
         </div>
         
+
+
+
+
+
+
         <!-- Footer -->
         <div class="footer">
             
