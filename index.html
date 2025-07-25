@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DefInSpace 2025 - Italian Edition</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            position: relative;
+            min-height: 100vh;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Background elements */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+        
+        .corner-frame {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #4da6d9;
+            z-index: 1;
+        }
+        
+        .corner-tl {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .corner-tr {
+            top: 20px;
+            right: 20px;
+            border-left: none;
+            border-bottom: none;
+        }
+        
+        .corner-bl {
+            bottom: 20px;
+            left: 20px;
+            border-right: none;
+            border-top: none;
+        }
+        
+        .corner-br {
+            bottom: 20px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .rec-indicator {
+            position: absolute;
+            top: -10px;
+            right: 0;
+            font-family: 'Orbitron', monospace;
+            font-size: 12px;
+            color: #ff4444;
+            font-weight: 700;
+        }
+        
+        .rec-indicator::before {
+            content: "●";
+            color: #ff4444;
+            margin-right: 5px;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(12px, 2vw, 16px);
+            font-weight: 600;
+            color: #4da6d9;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .main-title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(77, 166, 217, 0.5);
+            line-height: 0.8;
+        }
+        
+        .title-def {
+            font-size: clamp(40px, 8vw, 80px);
+            color: #ffffff;
+            display: block;
+        }
+        
+        .title-in {
+            font-size: clamp(20px, 4vw, 40px);
+            color: #cccccc;
+            display: block;
+            margin: 10px 0;
+        }
+        
+        .title-space {
+            font-size: clamp(40px, 8vw, 80px);
+            color: #4da6d9;
+            display: block;
+        }
+        
+        .tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(10px, 1.5vw, 14px);
+            font-weight: 400;
+            color: #cccccc;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        /* Event Info */
+        .event-info {
+            background: linear-gradient(135deg, rgba(77, 166, 217, 0.15) 0%, rgba(77, 166, 217, 0.05) 100%);
+            border: 1px solid rgba(77, 166, 217, 0.3);
+            border-radius: 15px;
+            padding: 30px 20px;
+            margin: 30px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .date-location {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(20px, 4vw, 32px);
+            font-weight: 700;
+            color: #4da6d9;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .location {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(16px, 2.5vw, 20px);
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        .theme {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(16px, 2.5vw, 24px);
+            font-weight: 600;
+            color: #4da6d9;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-top: 1px solid rgba(77, 166, 217, 0.3);
+            padding-top: 20px;
+        }
+        
+        /* Winner Section */
+        .winner-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 215, 0, 0.05) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 25px 20px;
+            margin: 30px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .winner-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(14px, 2.5vw, 20px);
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .winner-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(12px, 2vw, 16px);
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        
+        .press-highlights {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(12px, 1.8vw, 14px);
+            color: #cccccc;
+        }
+        
+        .press-link {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(12px, 1.8vw, 14px);
+            
+            /* Stile pulsante */
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #ffd700;
+            border-radius: 25px;
+            background: rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(5px);
+            
+            /* Effetti */
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+            
+            /* Glow effect */
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+        }
+
+        .press-link:hover {
+            /* Hover giallo con testo nero */
+            background: #ffd700;           /* Riempimento giallo pieno */
+            border-color: #ffd700;        /* Bordo giallo */
+            color: #000000;               /* Testo nero */
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+            text-shadow: none;            /* Rimuove il glow per leggibilità */
+        }
+        
+        /* Sponsor Section */
+        .sponsor-section {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 30px 20px;
+            margin: 30px 0;
+            border: 1px solid rgba(77, 166, 217, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .sponsor-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(18px, 3vw, 28px);
+            font-weight: 700;
+            color: #4da6d9;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        .sponsor-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .benefit-item {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(12px, 1.8vw, 15px);
+            font-weight: 500;
+            color: #e8e8e8;
+            padding: 12px 15px;
+            background: rgba(77, 166, 217, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid #4da6d9;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        
+        .benefit-item:hover {
+            transform: translateX(5px);
+            background: rgba(77, 166, 217, 0.15);
+        }
+        
+        .call-to-action {
+            text-align: center;
+            color: #4da6d9;
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(14px, 2.2vw, 18px);
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1.4;
+        }
+        
+        /* Footer */
+/* Footer */
+        .footer {
+            margin-top: auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(77, 166, 217, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .dac-logo {
+            width: 60px;
+            height: auto;
+            flex-shrink: 0;
+            filter: brightness(1.1);
+        }
+        
+        .dac-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(10px, 1.5vw, 12px);
+            font-weight: 600;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+        
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-left: auto; /* Forza l'allineamento a destra */
+        }
+        
+        .creanative-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Allinea tutto a destra */
+            gap: 8px;
+        }
+        
+        .creanative-logo {
+            height: 35px;
+            width: auto;
+            flex-shrink: 0;
+            filter: brightness(1.1);
+        }
+        
+        .creanative-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(8px, 1.2vw, 10px);
+            font-weight: 500;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: right; /* Allineamento testo a destra */
+        }
+        
+        .csc-section {
+            display: flex;
+            flex-direction: row; /* Cambia da column a row */
+            align-items: center; /* Centra verticalmente */
+            gap: 15px; /* Spazio tra testo e logo */
+        }
+        
+        .csc-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(10px, 1.5vw, 12px);
+            font-weight: 600;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            text-align: right; /* Resta allineato a destra */
+        }
+        
+        .csc-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .csc-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(1.1);
+        }
+        /* Responsive adjustments per footer */
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .footer-left, .footer-right {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-right {
+                gap: 15px;
+            }
+            
+            .creanative-logo {
+                height: 30px;
+            }
+            
+            .csc-logo {
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        /* Accent lines */
+        .accent-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #4da6d9 50%, transparent 100%);
+            z-index: 1;
+        }
+        
+        .accent-1 {
+            top: 25%;
+            left: 10%;
+            width: 80%;
+        }
+        
+        .accent-2 {
+            bottom: 30%;
+            left: 20%;
+            width: 60%;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .corner-frame {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .corner-tl, .corner-tr {
+                top: 15px;
+            }
+            
+            .corner-tl, .corner-bl {
+                left: 15px;
+            }
+            
+            .corner-tr, .corner-br {
+                right: 15px;
+            }
+            
+            .corner-bl, .corner-br {
+                bottom: 15px;
+            }
+            
+            .sponsor-benefits {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-left, .footer-right {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-info {
+                text-align: center;
+            }
+        }
+        
+
+            
+            .rec-indicator {
+                position: static;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* Animation for smooth entrance */
+        .container > * {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .container > *:nth-child(1) { animation-delay: 0.1s; }
+        .container > *:nth-child(2) { animation-delay: 0.2s; }
+        .container > *:nth-child(3) { animation-delay: 0.3s; }
+        .container > *:nth-child(4) { animation-delay: 0.4s; }
+        .container > *:nth-child(5) { animation-delay: 0.5s; }
+        .container > *:nth-child(6) { animation-delay: 0.6s; }
+        .container > *:nth-child(7) { animation-delay: 0.7s; }
+        .container > *:nth-child(8) { animation-delay: 0.8s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+         /* Official Event Section */
+        .official-event-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px 20px;
+            margin: 30px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .official-event-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(77, 166, 217, 0.2);
+        }
+        
+        .official-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: brightness(1.2);
+        }
+        
+        .official-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(18px, 3vw, 26px);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .official-description {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(14px, 2vw, 18px);
+            font-weight: 500;
+            color: #cccccc;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+        
+        .official-cta {
+            display: inline-block;
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(12px, 2vw, 16px);
+            font-weight: 700;
+            color: #4da6d9;
+            text-decoration: none;
+            padding: 12px 25px;
+            border: 2px solid #4da6d9;
+            border-radius: 30px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .official-cta:hover {
+            background: #4da6d9;
+            color: #1a1a2e;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(77, 166, 217, 0.5);
+        }
+
+
+
+
+                /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #4da6d9, #2c5364);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(77, 166, 217, 0.3);
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4da6d9, #ffffff);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .cta-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            margin-bottom: 25px;
+            font-weight: 500;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .packages-preview {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: inset 0 -3px 8px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            margin-bottom: 25px;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .package-item {
+            text-align: center;
+            padding: 20px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .package-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .package-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px currentColor;
+            letter-spacing: 1px;
+        }
+
+        .package-features {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+            line-height: 1.5;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .gold-package .package-title { color: #ffd700; }
+        .silver-package .package-title { color: #e5e7eb; }
+        .bronze-package .package-title { color: #f97316; }
+
+        .cta-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(77, 166, 217, 0.4);
+        }
+
+
+
+
+       
+
+       
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .packages-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .cta-section {
+                padding: 50px 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .event-info, .winner-section, .official-event-section, .sponsor-section, .cta-section {
+                margin: 20px 0;
+                padding: 20px 15px;
+            }
+            
+            .rec-indicator {
+                position: static;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    
+    <!-- Corner frames -->
+    <div class="corner-frame corner-tl"></div>
+    <div class="corner-frame corner-tr"></div>
+    <div class="corner-frame corner-bl"></div>
+    <div class="corner-frame corner-br"></div>
+    
+    <!-- Accent lines -->
+    <div class="accent-line accent-1"></div>
+    <!--<div class="accent-line accent-2"></div>-->
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="rec-indicator">REC</div>
+            <div class="subtitle">DEFINSPACE 2025 - ITALIAN EDITION</div>
+            <div class="main-title">
+                <span class="title-def">DEF</span>
+                <span class="title-in">IN</span>
+                <span class="title-space">SPACE</span>
+            </div>
+            <div class="tagline">THE HACKATHON OF THE FRENCH SPACE COMMAND</div>
+        </div>
+        
+        <!-- Event Info -->
+        <div class="event-info">
+            <div class="date-location">10 & 11 OCTOBER</div>
+            <div class="location">NAPOLI, ITALY</div>
+            <div class="theme">REAL-TIME SURVEILLANCE</div>
+        </div>
+        
+
+        <div class="official-event-section">
+            <img src="https://static.wixstatic.com/media/0a234b_bbc8db1896a34b4da17cf0e812e565fb~mv2.png/v1/fill/w_408,h_368,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/0a234b_bbc8db1896a34b4da17cf0e812e565fb~mv2.png" alt="DefInSpace Logo" class="official-logo">
+            <div class="official-title">OFFICIAL EVENT 2025</div>
+            <div class="official-description">Discover the complete DefInSpace experience and join the global space defense innovation challenge</div>
+            <a href="https://www.definspace.fr/en" target="_blank" class="official-cta">Visit Official Website</a>
+        </div>
+
+
+
+        <!-- Winner Section -->
+        <div class="winner-section">
+            <div class="winner-title">🏆 2023 TECHNICAL CATEGORY WINNERS</div>
+            <div class="winner-text">Join the proven success story - International visibility guaranteed</div>
+            <div class="press-highlights">2023 Press Highlights – <a href="https://dac-scarl.github.io/DEFINSPACE2023/index.html" class="press-link">CLICK TO VIEW</a></div>
+        </div>
+        
+        <!-- Sponsor Section -->
+        <div class="sponsor-section">
+            <div class="sponsor-title">BECOME A SPONSOR</div>
+            <div class="sponsor-benefits">
+                <div class="benefit-item">International Visibility</div>
+                <div class="benefit-item">Event Co-Branding</div>
+                <div class="benefit-item">Jury Participation</div>
+                <div class="benefit-item">Winner's Kit Branding</div>
+                <div class="benefit-item">Talent Recruitment</div>
+                <div class="benefit-item">Networking</div>
+                <div class="benefit-item">Media Coverage</div>
+                <div class="benefit-item">Technology Innovation</div>
+
+            </div>
+            <div class="call-to-action">
+                24 HOURS TO IMAGINE TOMORROW'S SPACE DEFENSE
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div class="cta-content">
+                <h3 class="cta-title">Become DefInSpace 2025 Sponsor</h3>
+                <p class="cta-text">Join us for a unique experience of innovation and visibility in the aerospace sector.</p>
+                <div class="packages-preview">
+                    <div class="packages-grid">
+                        <div class="package-item gold-package">
+                            <div class="package-title">Gold Package</div>
+                            <div class="package-features">Co-branding, keynote speech, 2 jury members, corporate video</div>
+                        </div>
+                        <div class="package-item silver-package">
+                            <div class="package-title">Silver Package</div>
+                            <div class="package-features">Keynote speech, 1 jury member, dedicated interview</div>
+                        </div>
+                        <div class="package-item bronze-package">
+                            <div class="package-title">Bronze Package</div>
+                            <div class="package-features">Logo on materials, promotional video, communication presence</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://dac-scarl.github.io/DEFINSPACE2025/sponsor_packages.html" class="cta-button">
+                    📋 See Complete Terms and Pricing
+                </a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-left">
+                <img src="https://dac-scarl.github.io/DEFINSPACE2025/DAC_bianco.png" alt="DAC Logo" class="dac-logo">
+                <div class="dac-text">Distretto Aerospaziale<br>della Campania</div>
+            </div>
+            <div class="footer-right">
+                <div class="creanative-section">
+                    <img src="https://static.wixstatic.com/media/0a234b_01a749ad129e485cb0b01ef252c8f35e~mv2.png/v1/fill/w_476,h_196,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%20blanc%20cr%C3%A9anative.png" alt="CréaNative Logo" class="creanative-logo">
+                    <div class="creanative-text">CréaNative Agency</div>
+                </div>
+                <div class="csc-section">
+                    <div class="csc-text">French Space<br>Command</div>
+                    <div class="csc-logo">
+                        <img src="https://static.wixstatic.com/media/0a234b_2245e581ab2b447ea5c110c3dc272d48~mv2.png/v1/crop/x_1,y_0,w_2375,h_2375/fill/w_242,h_242,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%2Bdevise-fond%20clair.png" alt="CSC Logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
