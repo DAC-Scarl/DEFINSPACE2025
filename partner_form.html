@@ -352,8 +352,7 @@
         <div class="form-container">
             <h2 class="form-title">Manifestazione di Interesse</h2>
             
-            <form action="https://script.google.com/macros/s/AKfycbxD5uP2oBaR3teItJRXrKipxhIHPejEBKpR17tLBj5oPiqx-j0KSWMtRqTEhEf84ymK/exec" method="POST">
-
+            <form id="partnerForm" action="https://script.google.com/macros/s/AKfycbxD5uP2oBaR3teItJRXrKipxhIHPejEBKpR17tLBj5oPiqx-j0KSWMtRqTEhEf84ymK/exec" method="POST">
                 <div class="form-group">
                     <label>Azienda / Ente <span class="required">*</span></label>
                     <input type="text" name="azienda" required placeholder="Inserisci il nome dell'azienda o ente">
@@ -415,7 +414,43 @@
         
 
     </div>
-
+    <script>
+        const form = document.getElementById("partnerForm");
+        const successMessage = document.getElementById("successMessage");
+        
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+            
+            // Disable submit button during processing
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'INVIO IN CORSO...';
+            submitBtn.disabled = true;
+            
+            const data = new FormData(form);
+            
+            fetch("https://script.google.com/macros/s/AKfycbw-5MzCRMULf_ToN1d9Jm7IvwY-Q7aswjBiW_xJPqZyhs00vvLlF0zzYd-VWQhymHHj/exec", {
+                method: "POST",
+                body: data
+            })
+            .then(res => res.text())
+            .then(msg => {
+                successMessage.style.display = 'block';
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                form.reset();
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            })
+            .catch(err => {
+                alert("Errore nell'invio: " + err + "\nRiprova o contatta v.striano@daccampania.com");
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
 
 </body>
 </html>
