@@ -434,19 +434,18 @@
         }
 
 
-        /* Icona rotazione mobile */
+        /* Icona rotazione mobile - solo mobile, fissa in alto */
+        /* Icona rotazione mobile - solo mobile, fissa in alto */
         .rotate-hint {
-            display: none;
+            display: none;  /* Nascosto di default */
             position: fixed;
-            top: 50%;
+            top: 80px;
             right: 20px;
-            transform: translateY(-50%);
             z-index: 1000;
             background: rgba(77, 166, 217, 0.9);
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
+            width: 50px;
+            height: 50px;
             align-items: center;
             justify-content: center;
             animation: pulse 2s infinite;
@@ -456,13 +455,13 @@
 
         .rotate-hint::before {
             content: "📱";
-            font-size: 24px;
+            font-size: 20px;
             animation: rotate 3s ease-in-out infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.7; transform: translateY(-50%) scale(1); }
-            50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
         }
 
         @keyframes rotate {
@@ -472,13 +471,12 @@
             100% { transform: rotate(0deg); }
         }
 
-        /* Mostra solo su mobile portrait */
-        @media (max-width: 768px) and (orientation: portrait) {
+        /* Solo su mobile (max 480px) in portrait */
+        @media (max-width: 480px) and (orientation: portrait) {
             .rotate-hint {
-                display: flex;
+                display: flex;  /* Mostra solo qui */
             }
         }
-
 
         
     </style>
