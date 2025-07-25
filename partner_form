@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DefInSpace 2025 - Manifestazione di Interesse</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 100%);
+            min-height: 100vh;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Background elements */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.02;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+        
+        .corner-frame {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #4da6d9;
+            z-index: 1;
+        }
+        
+        .corner-tl {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .corner-tr {
+            top: 20px;
+            right: 20px;
+            border-left: none;
+            border-bottom: none;
+        }
+        
+        .corner-bl {
+            bottom: 20px;
+            left: 20px;
+            border-right: none;
+            border-top: none;
+        }
+        
+        .corner-br {
+            bottom: 20px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+        }
+        
+        .main-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(24px, 5vw, 36px);
+            font-weight: 900;
+            color: #4da6d9;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(77, 166, 217, 0.4);
+        }
+        
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(14px, 2.5vw, 18px);
+            font-weight: 600;
+            color: #cccccc;
+            letter-spacing: 1px;
+        }
+        
+        /* Form container */
+        .form-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(77, 166, 217, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+        
+        .form-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(18px, 3vw, 24px);
+            font-weight: 700;
+            color: #4da6d9;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        /* Form elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        .required {
+            color: #ff4444;
+            margin-left: 3px;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(77, 166, 217, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #4da6d9;
+            box-shadow: 0 0 15px rgba(77, 166, 217, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        input::placeholder {
+            color: #cccccc;
+        }
+        
+        select option {
+            background: #1a1a2e;
+            color: white;
+        }
+        
+        /* Submit button */
+        .submit-btn {
+            width: 100%;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #4da6d9 0%, #357ca5 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-family: 'Orbitron', monospace;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #357ca5 0%, #2a6287 100%);
+            box-shadow: 0 5px 20px rgba(77, 166, 217, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Info sections */
+        .info-section {
+            background: rgba(77, 166, 217, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(77, 166, 217, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .info-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            color: #4da6d9;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .info-text {
+            font-size: 13px;
+            color: #e8e8e8;
+            line-height: 1.5;
+        }
+        
+        .required-note {
+            font-size: 12px;
+            color: #cccccc;
+            margin-top: 15px;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .required-note .required {
+            color: #ff4444;
+        }
+        
+        /* Call to action */
+        .cta-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(77, 166, 217, 0.2);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .cta-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(14px, 2vw, 16px);
+            color: #4da6d9;
+            font-weight: 600;
+            padding: 15px;
+            background: rgba(77, 166, 217, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(77, 166, 217, 0.3);
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .corner-frame {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .corner-tl, .corner-tr {
+                top: 10px;
+            }
+            
+            .corner-bl, .corner-br {
+                bottom: 10px;
+            }
+            
+            .corner-tl, .corner-bl {
+                left: 10px;
+            }
+            
+            .corner-tr, .corner-br {
+                right: 10px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            input, select, textarea {
+                padding: 10px 12px;
+            }
+            
+            .submit-btn {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+        }
+        
+        /* Animations */
+        .form-container {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Success message */
+        .success-message {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.5);
+            color: #4caf50;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    
+    <!-- Corner frames -->
+    <div class="corner-frame corner-tl"></div>
+    <div class="corner-frame corner-tr"></div>
+    <div class="corner-frame corner-bl"></div>
+    <div class="corner-frame corner-br"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="main-title">PARTNERSHIP REQUEST</div>
+            <div class="subtitle">DEFINSPACE ITALY 2025 • NAPOLI • 10-11 OCTOBER</div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <div class="cta-text">Prebooking gratuito e senza impegno per accesso prioritario alle partnership DEFINSPACE 2025
+            </div>
+        </div>
+        
+        <!-- Form -->
+        <div class="form-container">
+            <h2 class="form-title">Manifestazione di Interesse</h2>
+            
+            <form action="https://script.google.com/macros/s/AKfycbxD5uP2oBaR3teItJRXrKipxhIHPejEBKpR17tLBj5oPiqx-j0KSWMtRqTEhEf84ymK/exec" method="POST">
+
+                <div class="form-group">
+                    <label>Azienda / Ente <span class="required">*</span></label>
+                    <input type="text" name="azienda" required placeholder="Inserisci il nome dell'azienda o ente">
+                </div>
+                
+                <div class="form-group">
+                    <label>Persona di riferimento <span class="required">*</span></label>
+                    <input type="text" name="referente" required placeholder="Nome e cognome del referente">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" name="email" required placeholder="email@esempio.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>Telefono</label>
+                    <input type="text" name="telefono" placeholder="+39 xxx xxx xxxx (facoltativo)">
+                </div>
+                
+                <div class="form-group">
+                    <label>Scelta Sponsorizzazione <span class="required">*</span></label>
+                    <select name="sponsor" required>
+                        <option value="">Seleziona il pacchetto di interesse...</option>
+                        <option value="Gold">Gold (5.000€ +IVA)</option>
+                        <option value="Silver">Silver (3.000€ +IVA)</option>
+                        <option value="Bronze">Bronze (1.500€ +IVA)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Socio Diretto del DAC? <span class="required">*</span></label>
+                    <select name="socio" required>
+                        <option value="">Seleziona...</option>
+                        <option value="Sì">Sì (sconto 20% applicabile)</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                
+                <div class="required-note">
+                    <span class="required">*</span> Campi obbligatori
+                </div>
+                
+                <button type="submit" class="submit-btn">Invia Manifestazione</button>
+                
+                <div class="success-message" id="successMessage">
+                    ✓ Grazie! La tua richiesta è stata inviata con successo.
+                </div>
+            </form>
+        </div>
+        
+        <!-- Info sections -->
+        <div class="info-section">
+            <div class="info-title">Importante</div>
+            <div class="info-text">
+                Questa manifestazione di interesse <strong>non è vincolante</strong>. Riceverai all'email indicata un invito di sponsorship ufficiale dal Distretto Aerospaziale della Campania con tutti i dettagli e le modalità di adesione.
+            </div>
+        </div>
+        
+
+    </div>
+
+
+</body>
+</html>
