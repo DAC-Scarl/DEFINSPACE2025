@@ -916,6 +916,77 @@
                 gap: 15px;
             }
         }
+        
+        /* Telegram Section */
+        .telegram-section {
+            background: linear-gradient(135deg, rgba(0, 136, 204, 0.2) 0%, rgba(0, 136, 204, 0.08) 100%);
+            border: 1px solid rgba(0, 136, 204, 0.4);
+            border-radius: 15px;
+            padding: 40px 30px;
+            margin: 40px 0;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 136, 204, 0.3);
+        }
+        
+        .telegram-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0088cc, #ffffff, #0088cc);
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .telegram-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 136, 204, 0.7);
+        }
+        
+        .telegram-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            margin-bottom: 25px;
+            font-weight: 500;
+            line-height: 1.6;
+            color: #e8e8e8;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .telegram-btn {
+            display: inline-block;
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-weight: 700;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: #0088cc;
+            color: #ffffff;
+            border: 2px solid #0088cc;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.5);
+        }
+        
+        .telegram-btn:hover {
+            background: #00aaff;
+            border-color: #00aaff;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 136, 204, 0.7);
+        }
 
     </style>
 </head>
@@ -968,6 +1039,24 @@
             <div class="winner-text">Join the proven success story - International visibility guaranteed</div>
             <div class="press-highlights">2023 Press Highlights – <a href="https://dac-scarl.github.io/DEFINSPACE2023/index.html" class="press-link">CLICK TO VIEW</a></div>
         </div>
+        
+        <!-- Telegram Section -->
+        <div class="telegram-section">
+            <div class="telegram-content">
+                <h3 class="telegram-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 240 240" fill="none" style="vertical-align: middle; margin-right: 10px;">
+                        <circle cx="120" cy="120" r="120" fill="#0088cc"/>
+                        <path d="M96 173c-4.9 0-4-1.8-5.7-6.4L78 132.7l94-55.7" fill="#c8daea"/>
+                        <path d="M96 173c3.8 0 5.5-1.7 7.6-3.6l20.4-19.9-25.5-15.3" fill="#a9c9dd"/>
+                        <path d="M98.5 134.2 150 173c5.7 3.1 9.8 1.5 11.2-5.3l20.3-95.6c2.1-8.6-3.2-12.5-8.7-9.9L52.5 118.6c-8.4 3.4-8.3 8.1-1.5 10.2l37.7 11.8 87-55.1c4.1-2.5 7.9-1.1 4.8 1.6l-81 73.1z" fill="#fff"/>
+                    </svg>
+                    Unisciti al Canale Ufficiale Telegram
+                </h3>
+                <p class="telegram-text">Resta aggiornato in tempo reale su DefInSpace 2025 – news, aggiornamenti e informazioni per i partecipanti.</p>
+                <a href="https://t.me/+D_1u-HMplMU5ZTQ0" target="_blank" class="telegram-btn"> Iscriviti  al Canale Telegram</a>
+            </div>
+        </div>
+
         
         <!-- Participants CTA Section -->
         <div class="participants-cta-section">
