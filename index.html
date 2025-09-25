@@ -988,6 +988,42 @@
             box-shadow: 0 12px 30px rgba(0, 136, 204, 0.7);
         }
 
+        /* Deadline Section */
+        .deadline-section {
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.15), rgba(255, 69, 0, 0.05));
+            border: 1px solid rgba(255, 69, 0, 0.4);
+            border-radius: 15px;
+            padding: 30px 20px;
+            margin: 30px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .deadline-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 69, 0, 0.3);
+        }
+        
+        .deadline-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(18px, 3vw, 26px);
+            font-weight: 700;
+            color: #ff4500;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .deadline-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(14px, 2vw, 18px);
+            font-weight: 500;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+
     </style>
 </head>
 <body>
@@ -1022,7 +1058,16 @@
             <div class="location">NAPLES, ITALY</div>
             <div class="theme">REAL-TIME SURVEILLANCE</div>
         </div>
-        
+        <!-- Submission Deadline Section -->
+        <div class="deadline-section">
+            <div class="deadline-content">
+                <h3 class="deadline-title"> Submission Deadline: Tomorrow!</h3>
+                <p class="deadline-text">
+                    Teams, make sure to submit your projects before the deadline! Don’t miss your chance to participate in DefInSpace 2025. Act now!
+                </p>
+            </div>
+        </div>
+
 
         <div class="official-event-section">
             <img src="https://static.wixstatic.com/media/0a234b_bbc8db1896a34b4da17cf0e812e565fb~mv2.png/v1/fill/w_408,h_368,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/0a234b_bbc8db1896a34b4da17cf0e812e565fb~mv2.png" alt="DefInSpace Logo" class="official-logo">
